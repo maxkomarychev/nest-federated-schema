@@ -18,7 +18,7 @@ async function generateSchema() {
   );
   const stringSchema = printSchema(schema);
   console.log(stringSchema);
-  writeFileSync("with-docs.graphql", stringSchema);
+  writeFileSync("schema-docs-sdl.graphql", stringSchema);
 }
 
 generateSchema();

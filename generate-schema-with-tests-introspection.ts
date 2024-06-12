@@ -1,8 +1,8 @@
 import { GraphQLSchemaHost } from "@nestjs/graphql";
-import { printSubgraphSchema } from "@apollo/subgraph";
 import { writeFileSync } from "fs";
 import { Test } from "@nestjs/testing";
 import { AppModule } from "./src/app.module";
+import { printIntrospectionSchema } from "@apollo/subgraph/dist/printSubgraphSchema";
 
 async function generateSchema() {
   try {
@@ -13,9 +13,10 @@ async function generateSchema() {
     await app.init();
 
     const gqlSchemaHost = app.get(GraphQLSchemaHost);
-    const schema = printSubgraphSchema(gqlSchemaHost.schema) + "\n";
+    // const schema = printSchema(gqlSchemaHost.schema) + "\n";
+    const schema = printIntrospectionSchema(gqlSchemaHost.schema) + "\n";
     console.log(schema);
-    writeFileSync("schema-test-module.graphql", schema);
+    writeFileSync("schema-test-module-introspection.graphql", schema);
   } catch (error) {
     console.error(error);
   }
