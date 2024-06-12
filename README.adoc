@@ -14,3 +14,9 @@ Run the following command:
 
 Observe produced results are incomplete for the first 3 scripts and only contain 
 correct federated schema for the last one.
+
+
+[source,graphql]
+----
+include::schema-auto.graphql[]
+----
