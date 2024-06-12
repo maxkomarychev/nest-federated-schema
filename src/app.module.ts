@@ -6,6 +6,7 @@ import {
   ApolloFederationDriver,
   ApolloFederationDriverConfig,
 } from "@nestjs/apollo";
+import { UsersModule } from './users/users.module';
 
 @Module({
   imports: [
@@ -13,6 +14,7 @@ import {
       driver: ApolloFederationDriver,
       autoSchemaFile: { federation: 2, path: "auto.graphql" },
     }),
+    UsersModule,
   ],
   controllers: [AppController],
   providers: [AppService],
